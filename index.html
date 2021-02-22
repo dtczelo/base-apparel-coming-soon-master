@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Frontend Mentor | Base Apparel coming soon page</title>
+</head>
+
+<body>
+
+  <div class="img-bg"></div>
+
+  <main class="main-wrapper">
+
+    <header class="logo">
+      <img class="logo__img" src="./images/logo.svg" alt="Business logo">
+    </header>
+
+    <div class="photo">
+      <picture>
+        <source media="(max-width: 768px)" srcset="./images/hero-mobile.jpg">
+        <img class="photo__img" src="./images/hero-desktop.jpg" alt="photo">
+      </picture>
+    </div>
+
+    <div class="coming">
+      <h1 class="coming__heading">We're<br>
+        <span>coming <br> soon</span>
+      </h1>
+      <p class="coming__text">Hello fellow shoppers! We're currently building our new fashion store.
+        Add your email below to stay up-to-date with announcements and our launch deals.</p>
+      <form class="coming__form">
+        <input id="email" type="text" class="coming__input" placeholder="Email Address">
+        <button id="subButton" class="coming__button"></button>
+        <img id="errorIcon" class="coming__error-icon" src="./images/icon-error.svg" alt="Error icon">
+      </form>
+      <div class="coming__error-msg" id="errorMsg">Please provide a valid email</div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Zelô</a>.
+    </p>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+
+</html>
