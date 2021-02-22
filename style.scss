@@ -45,6 +45,7 @@ body {
 
 .photo {
     grid-area: photo;
+    align-items: start;
     &__img {
         width: 100%;
         height: 100%;
@@ -58,10 +59,10 @@ body {
     flex-direction: column;
     padding: 4rem 17rem 4rem 8rem;
     &__heading {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
         font-weight: 300;
         text-transform: uppercase;
-        letter-spacing: 1rem;
+        letter-spacing: 1.5rem;
         & span {
             color: hsl(0, 6%, 24%);
             font-weight: 400;
@@ -81,6 +82,7 @@ body {
         border-radius: 40px;
         border: 1px solid hsl(0, 36%, 70%);
         outline: none;
+        background: transparent;
         &::placeholder {
             color: hsl(0, 36%, 70%);
         }
@@ -166,9 +168,14 @@ footer {
         grid-template-columns: 1fr;
     }
     .logo {
+        grid-area: logo;
         padding: 4rem 4rem;
     }
+    .photo {
+        grid-area: photo;
+    }
     .coming {
+        grid-area: coming;
         padding: 4rem 4rem 4rem 4rem;
         text-align: center;
         &__heading {
@@ -178,14 +185,6 @@ footer {
 }
 
 @media (max-width: 576px) {
-    .main-wrapper {
-        grid-template-areas:
-            "logo"
-            "photo"
-            "coming";
-        grid-template-rows: repeat(3, auto);
-        grid-template-columns: 1fr;
-    }
     .logo {
         grid-area: logo;
         padding: 2rem 1rem;

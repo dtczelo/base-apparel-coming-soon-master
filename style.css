@@ -52,6 +52,9 @@ body {
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: photo;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
 }
 
 .photo__img {
@@ -76,10 +79,10 @@ body {
 }
 
 .coming__heading {
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 1rem;
+  letter-spacing: 1.5rem;
 }
 
 .coming__heading span {
@@ -103,6 +106,7 @@ body {
   border-radius: 40px;
   border: 1px solid #ce9797;
   outline: none;
+  background: transparent;
 }
 
 .coming__input::-webkit-input-placeholder {
@@ -208,9 +212,20 @@ footer {
         grid-template-columns: 1fr;
   }
   .logo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: logo;
     padding: 4rem 4rem;
   }
+  .photo {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: photo;
+  }
   .coming {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: coming;
     padding: 4rem 4rem 4rem 4rem;
     text-align: center;
   }
@@ -220,13 +235,6 @@ footer {
 }
 
 @media (max-width: 576px) {
-  .main-wrapper {
-        grid-template-areas: "logo" "photo" "coming";
-    -ms-grid-rows: (auto)[3];
-        grid-template-rows: repeat(3, auto);
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
   .logo {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
