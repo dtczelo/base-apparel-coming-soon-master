@@ -217,11 +217,10 @@ footer {
     }
     .photo {
         grid-area: photo;
-        padding-left: 2rem;
+        padding-left: 4rem;
     }
     .coming {
         grid-area: coming;
-        align-self: center;
         text-align: center;
         &__heading {
             text-align: left;
