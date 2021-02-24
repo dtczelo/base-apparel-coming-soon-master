@@ -28,24 +28,31 @@ body {
 
 .main-wrapper {
     position: relative;
-    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto 0 auto;
     min-height: 80vh;
     display: grid;
     grid-template-areas:
-        "logo photo"
-        "coming photo";
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr auto;
+        "logo"
+        "photo"
+        "coming";
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: 1fr;
 }
 
 .logo {
     grid-area: logo;
-    padding: 4rem 8rem;
+    justify-self: center;
+    width: calc(min(90%, 400px));
+    padding: 2rem 0;
+    & img {
+        width: calc(min(80%, 160px));
+    }
 }
 
 .photo {
     grid-area: photo;
-    align-items: start;
+    align-self: center;
     &__img {
         width: 100%;
         height: auto;
@@ -55,20 +62,24 @@ body {
 
 .coming {
     grid-area: coming;
+    justify-self: center;
+    width: calc(min(90%, 400px));
+    padding: 3rem 0;
     display: flex;
     flex-direction: column;
-    padding: 4rem 17rem 4rem 8rem;
     &__heading {
-        font-size: 3.5rem;
+        text-align: center;
+        font-size: 2.5rem;
         font-weight: 300;
         text-transform: uppercase;
-        letter-spacing: 1.5rem;
+        letter-spacing: 1rem;
         & span {
             color: hsl(0, 6%, 24%);
-            font-weight: 400;
+            font-weight: 700;
         }
     }
     &__text {
+        text-align: center;
         padding: 2.5rem 0;
         line-height: 1.5rem;
     }
@@ -78,16 +89,13 @@ body {
     }
     &__input {
         width: 100%;
-        padding: 1.3rem 4rem 1.3rem 2rem;
+        padding: 1.2rem 4rem 1.2rem 2rem;
         border-radius: 40px;
         border: 1px solid hsl(0, 36%, 70%);
         outline: none;
         background: transparent;
         &::placeholder {
             color: hsl(0, 36%, 70%);
-        }
-        &:focus {
-            border: 2px solid hsl(0, 93%, 68%);
         }
     }
     &__button {
@@ -96,17 +104,19 @@ body {
         top: 0;
         right: 0;
         background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
-        padding: 1.3rem 3rem;
+        padding: 1.2rem 1.8rem;
         border-radius: 40px;
         box-shadow: 5px 19px 42px -7px hsla(0, 74%, 74%, 0.623);
         border: none;
         outline: none;
         cursor: pointer;
+        transition: box-shadow 0.4s ease;
         &::before {
             content: url("./images/icon-arrow.svg");
         }
         &:hover {
             background: hsl(0, 80%, 86%);
+            box-shadow: 5px 19px 22px 0px hsla(0, 74%, 74%, 0.623);
         }
     }
     &__error-icon {
@@ -124,92 +134,104 @@ body {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: 2%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.signature {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f0902;
+    color: #f25a29;
+    font-weight: 700;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 0 2px 20px -8px #1f0902a8;
+    opacity: 0.7;
+    transition: background-color 0.4s ease, opacity 0.2s ease, box-shadow 0.4s ease, height 0.4s ease, border-radius 0.4s ease, width 0.4s ease;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 10px 40px -8px #1f0902a6;
+        opacity: 1;
+    }
+    &::before {
+        content: "Z";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 1rem;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        transition: opacity 0.5s ease-in;
+    }
+    &__attribution {
+        line-height: 1.5;
+        color: #1f0902;
+        text-decoration: none;
+        transform: scale(0);
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+}
+
+.signature-active {
+    width: 280px;
+    height: 70px;
+    border-radius: 0;
+    opacity: 1;
+    background-color: #f25a29;
+    & .signature__attribution {
+        transform: scale(1);
+        opacity: 1;
+    }
+    &.signature::before {
+        opacity: 0;
+    }
 }
 
 .error {
     display: block;
 }
 
-@media (max-width: 1240px) {
-    .logo {
-        padding: 4rem 4rem;
-    }
-    .photo {
-        &__img {
-            height: 100%;
-        }
-    }
-    .coming {
-        padding: 4rem 4rem 4rem 4rem;
-        &__heading {
-            font-size: 3.5rem;
-        }
-    }
+.errorMail {
+    border: 2px solid hsl(0, 93%, 68%);
 }
 
-@media (max-width: 1024px) {
-    .logo {
-        padding: 4rem 4rem;
-    }
-    .coming {
-        padding: 4rem 4rem 4rem 4rem;
-        &__heading {
-            font-size: 3rem;
-        }
-    }
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .main-wrapper {
         grid-template-areas:
-            "logo"
-            "photo"
-            "coming";
-        grid-template-rows: repeat(3, auto);
-        grid-template-columns: 1fr;
+            "logo photo"
+            "coming photo";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr auto;
     }
     .logo {
         grid-area: logo;
-        padding: 4rem 4rem;
+        padding: 4rem 0;
     }
     .photo {
         grid-area: photo;
+        padding-left: 2rem;
     }
     .coming {
         grid-area: coming;
-        padding: 4rem 4rem 4rem 4rem;
+        align-self: center;
         text-align: center;
         &__heading {
-            font-size: 3rem;
+            text-align: left;
+            font-size: 3.5rem;
         }
-    }
-}
-
-@media (max-width: 576px) {
-    .logo {
-        grid-area: logo;
-        padding: 2rem 1rem;
-        width: 50%;
-        &__img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
-    }
-    .coming {
-        padding: 4rem 1rem;
-        &__heading {
-            font-size: 2.5rem;
-        }
-        &__input {
-            padding: 1rem 4rem 1rem 2rem;
+        &__text {
+            text-align: left;
         }
         &__button {
-            padding: 1rem 3rem;
+            padding: 1.2rem 2.8rem;
         }
     }
 }

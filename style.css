@@ -29,32 +29,39 @@ body {
 
 .main-wrapper {
   position: relative;
-  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto 0 auto;
   min-height: 80vh;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "logo photo" "coming photo";
-  -ms-grid-rows: auto 1fr;
-      grid-template-rows: auto 1fr;
-  -ms-grid-columns: 1fr auto;
-      grid-template-columns: 1fr auto;
+      grid-template-areas: "logo" "photo" "coming";
+  -ms-grid-rows: (auto)[3];
+      grid-template-rows: repeat(3, auto);
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
 }
 
 .logo {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
   grid-area: logo;
-  padding: 4rem 8rem;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  width: calc(min(90%, 400px));
+  padding: 2rem 0;
+}
+
+.logo img {
+  width: calc(min(80%, 160px));
 }
 
 .photo {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
   grid-area: photo;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .photo__img {
@@ -65,9 +72,12 @@ body {
 }
 
 .coming {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
   grid-area: coming;
+  justify-self: center;
+  width: calc(min(90%, 400px));
+  padding: 3rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -75,22 +85,23 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 4rem 17rem 4rem 8rem;
 }
 
 .coming__heading {
-  font-size: 3.5rem;
+  text-align: center;
+  font-size: 2.5rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 1.5rem;
+  letter-spacing: 1rem;
 }
 
 .coming__heading span {
   color: #413a3a;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .coming__text {
+  text-align: center;
   padding: 2.5rem 0;
   line-height: 1.5rem;
 }
@@ -102,7 +113,7 @@ body {
 
 .coming__input {
   width: 100%;
-  padding: 1.3rem 4rem 1.3rem 2rem;
+  padding: 1.2rem 4rem 1.2rem 2rem;
   border-radius: 40px;
   border: 1px solid #ce9797;
   outline: none;
@@ -125,23 +136,23 @@ body {
   color: #ce9797;
 }
 
-.coming__input:focus {
-  border: 2px solid #f96262;
-}
-
 .coming__button {
   height: 100%;
   position: absolute;
   top: 0;
   right: 0;
   background: linear-gradient(135deg, #f8bfbf, #ee8c8c);
-  padding: 1.3rem 3rem;
+  padding: 1.2rem 1.8rem;
   border-radius: 40px;
   -webkit-box-shadow: 5px 19px 42px -7px rgba(238, 140, 140, 0.623);
           box-shadow: 5px 19px 42px -7px rgba(238, 140, 140, 0.623);
   border: none;
   outline: none;
   cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 0.4s ease;
+  transition: -webkit-box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease;
+  transition: box-shadow 0.4s ease, -webkit-box-shadow 0.4s ease;
 }
 
 .coming__button::before {
@@ -150,6 +161,8 @@ body {
 
 .coming__button:hover {
   background: #f8bfbf;
+  -webkit-box-shadow: 5px 19px 22px 0px rgba(238, 140, 140, 0.623);
+          box-shadow: 5px 19px 22px 0px rgba(238, 140, 140, 0.623);
 }
 
 .coming__error-icon {
@@ -168,100 +181,136 @@ body {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 2%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+.signature {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #1f0902;
+  color: #f25a29;
+  font-weight: 700;
+  border-radius: 50%;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 20px -8px #1f0902a8;
+          box-shadow: 0 2px 20px -8px #1f0902a8;
+  opacity: 0.7;
+  -webkit-transition: background-color 0.4s ease, opacity 0.2s ease, height 0.4s ease, border-radius 0.4s ease, width 0.4s ease, -webkit-box-shadow 0.4s ease;
+  transition: background-color 0.4s ease, opacity 0.2s ease, height 0.4s ease, border-radius 0.4s ease, width 0.4s ease, -webkit-box-shadow 0.4s ease;
+  transition: background-color 0.4s ease, opacity 0.2s ease, box-shadow 0.4s ease, height 0.4s ease, border-radius 0.4s ease, width 0.4s ease;
+  transition: background-color 0.4s ease, opacity 0.2s ease, box-shadow 0.4s ease, height 0.4s ease, border-radius 0.4s ease, width 0.4s ease, -webkit-box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.signature:hover {
+  -webkit-box-shadow: 0 10px 40px -8px #1f0902a6;
+          box-shadow: 0 10px 40px -8px #1f0902a6;
+  opacity: 1;
+}
+
+.signature::before {
+  content: "Z";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 1rem;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 1;
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+}
+
+.signature__attribution {
+  line-height: 1.5;
+  color: #1f0902;
+  text-decoration: none;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.signature-active {
+  width: 280px;
+  height: 70px;
+  border-radius: 0;
+  opacity: 1;
+  background-color: #f25a29;
+}
+
+.signature-active .signature__attribution {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+}
+
+.signature-active.signature::before {
+  opacity: 0;
 }
 
 .error {
   display: block;
 }
 
-@media (max-width: 1240px) {
-  .logo {
-    padding: 4rem 4rem;
-  }
-  .photo__img {
-    height: 100%;
-  }
-  .coming {
-    padding: 4rem 4rem 4rem 4rem;
-  }
-  .coming__heading {
-    font-size: 3.5rem;
-  }
+.errorMail {
+  border: 2px solid #f96262;
 }
 
-@media (max-width: 1024px) {
-  .logo {
-    padding: 4rem 4rem;
-  }
-  .coming {
-    padding: 4rem 4rem 4rem 4rem;
-  }
-  .coming__heading {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .main-wrapper {
-        grid-template-areas: "logo" "photo" "coming";
-    -ms-grid-rows: (auto)[3];
-        grid-template-rows: repeat(3, auto);
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+        grid-template-areas: "logo photo" "coming photo";
+    -ms-grid-rows: auto 1fr;
+        grid-template-rows: auto 1fr;
+    -ms-grid-columns: 1fr auto;
+        grid-template-columns: 1fr auto;
   }
   .logo {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     grid-area: logo;
-    padding: 4rem 4rem;
+    padding: 4rem 0;
   }
   .photo {
-    -ms-grid-row: 2;
-    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
     grid-area: photo;
+    padding-left: 2rem;
   }
   .coming {
-    -ms-grid-row: 3;
+    -ms-grid-row: 2;
     -ms-grid-column: 1;
     grid-area: coming;
-    padding: 4rem 4rem 4rem 4rem;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     text-align: center;
   }
   .coming__heading {
-    font-size: 3rem;
+    text-align: left;
+    font-size: 3.5rem;
   }
-}
-
-@media (max-width: 576px) {
-  .logo {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-    grid-area: logo;
-    padding: 2rem 1rem;
-    width: 50%;
-  }
-  .logo__img {
-    width: 100%;
-    height: auto;
-    -o-object-fit: contain;
-       object-fit: contain;
-  }
-  .coming {
-    padding: 4rem 1rem;
-  }
-  .coming__heading {
-    font-size: 2.5rem;
-  }
-  .coming__input {
-    padding: 1rem 4rem 1rem 2rem;
+  .coming__text {
+    text-align: left;
   }
   .coming__button {
-    padding: 1rem 3rem;
+    padding: 1.2rem 2.8rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
